@@ -1,0 +1,546 @@
+Gold:
+Standard of Heroes:
+
+###                    RUNES
+El Rune:El
+Eld Rune:Eld
+Tir Rune:Tir
+Nef Rune:Nef
+Eth Rune:Eth
+Ith Rune:Ith
+Tal Rune:Tal
+Ral Rune:Ral
+Ort Rune:Ort
+Thul Rune:Thul
+Amn Rune:Amn
+Sol Rune:Sol
+Shael Rune:Shael
+Dol Rune:Dol
+Hel Rune:Hel
+Io Rune:Io
+Lum Rune:Lum
+Ko Rune:Ko
+Fal Rune:Fal
+Lem Rune:Lem
+Pul Rune:\n Pul\n
+Um Rune:\n Um\n
+Mal Rune:\n Mal\n
+Ist Rune:\n Ist\n
+Gul Rune:\n Gul\n
+Vex Rune:\n Vex\n
+Ohm Rune:\n Ohm\n
+Lo Rune:\n Lo\n
+Sur Rune:\n Sur\n
+Ber Rune:\n Ber\n
+Jah Rune:\n Jah\n
+Cham Rune:\n Cham\n
+Zod Rune:\n Zod\n
+
+
+###                    GEMS
+Chipped .*:
+Flawed .*:
+Ruby:
+Topaz:
+#Amethyst:
+#Sapphire:
+Emerald:
+Diamond:
+Skull:
+
+
+###                    POTS
+Greater Healing Potion:HP
+Super Healing Potion:+HP+
+.*Healing Potion:
+Greater Mana Potion:MN
+Super Mana Potion:+MN+
+.*Mana Potion:
+Rejuvenation Potion:Rej
+Full Rejuvenation Potion:+Rej+
+Stamina Potion:Sta
+Antidote Potion:Anti
+Thawing Potion:Thaw
+Fulminating Potion:
+Exploding Potion:
+Oil Potion:
+Strangling Gas Potion:
+Choking Gas Potion:
+Rancid Gas Potion:
+Scroll of Town Portal:TP
+Scroll of Identify:ID
+
+
+###                    QUALITY
+Superior:Sup
+Low Quality:LQ
+Cracked:CK
+Damaged:Dam
+
+
+###                    WEAPONS
+Arrows:
+Bolts:
+
+
+###                    AXES
+Hand Axe:
+Axe:
+Double Axe:
+Military Pick:
+War Axe:
+Large Axe:
+Broad Axe:
+Battle Axe:
+Great Axe:
+Giant Axe:
+Hatchet:
+Cleaver:
+Twin Axe:
+Crowbill:
+Naga:
+Military Axe:
+Bearded Axe:
+Tabar:
+Gothic Axe:
+Ancient Axe:
+Tomahawk:
+Small Crescent:
+Ettin Axe:
+War Spike:
+Berserker Axe:
+Feral Axe:
+Silver-edged Axe:
+Decapitator:
+Champion Axe:
+Glorious Axe:
+
+
+###                    BOWS
+Short Bow:
+Hunter's Bow:
+Long Bow:
+Composite Bow:
+Short Battle Bow:
+Long Battle Bow:
+Short War Bow:
+Long War Bow:
+Edge Bow:
+Razor Bow:
+Cedar Bow:
+Double Bow:
+Short Siege Bow:
+Large Siege Bow:
+Rune Bow:
+Gothic Bow:
+Spider Bow:
+Blade Bow:
+Shadow Bow:
+Great Bow:
+Diamond Bow:
+Crusader Bow:
+Ward Bow:
+
+
+###                    CROSSBOWS
+Light Crossbow:
+Crossbow:
+Heavy Crossbow:
+Repeating Crossbow:
+Arbalest:
+Siege Crossbow:
+Ballista:
+Chu-Ko-Nu:
+Pellet Bow:
+Gorgon Crossbow:
+Colossus Crossbow:
+Demon Crossbow:
+
+
+###                    DAGGERS
+Dirk:
+Kris:
+Blade:
+Poignard:
+Rondel:
+Cinquedeas:
+Stiletto:
+Mithril Point:
+Fanged Knife:
+Legend Spike:
+
+
+###                    JAVELINS
+Javelin:
+Pilum:
+Short Spear:
+Glaive:
+Throwing Spear:
+War Javelin:
+Great Pilum:
+Simbilan:
+Spiculum:
+Harpoon:
+Hyperion Javelin:
+Stygian Pilum:
+Balrog Spear:
+Ghost Glaive:
+Winged Harpoon:
+
+
+###                    MACES
+Club:
+Spiked Club:
+Mace:
+Morning Star:
+Flail:
+War Hammer:
+Maul:
+Great Maul:
+Cudgel:
+Barbed Club:
+Flanged Mace:
+Jagged Star:
+Knout:
+Battle Hammer:
+War Club:
+Martel de Fer:
+Truncheon:
+Tyrant Club:
+Reinforced Mace:
+Devil Star:
+Scourge:
+Legendary Mallet:
+Ogre Maul:
+Thunder Maul:
+
+
+###                    POLEARMS
+Bardiche:
+Voulge:
+Scythe:
+Poleaxe:
+Halberd:
+War Scythe:
+Lochaber Axe:
+Bill:
+Battle Scythe:
+Partizan:
+Bec-de-Corbin:
+Grim Scythe:
+Ogre Axe:
+Colossus Voulge:
+Great Poleaxe:
+
+
+###                    SCEPTERS
+Scepter:
+Grand Scepter:
+War Scepter:
+Rune Scepter:
+Holy Water Sprinkler:
+Divine Scepter:
+Might Scepter:
+Seraph Rod:
+Caduceus:
+
+
+###                    SPEARS
+Spear:
+Trident:
+Brandistock:
+Spetum:
+Pike:
+War Spear:
+Fuscina:
+War Fork:
+Yari:
+Lance:
+Hyperion Spear:
+Stygian Pike:
+Mancatcher:
+Ghost Spear:
+War Pike:
+
+
+###                    STAVES
+Short Staff:
+Long Staff:
+Gnarled Staff:
+Battle Staff:
+War Staff:
+Jo Staff:
+Quarterstaff:
+Cedar Staff:
+Gothic Staff:
+Rune Staff:
+Walking Stick:
+Stalagmite:
+#Elder Staff:
+Shillelagh:
+
+
+###                    SWORDS
+Short Sword:
+Scimitar:
+Sabre:
+Falchion:
+Crystal Sword:
+Broad Sword:
+Long Sword:
+War Sword:
+Two-Handed Sword:
+Claymore:
+Giant Sword:
+Bastard Sword:
+Flamberge:
+Great Sword:
+Gladius:
+Cutlass:
+Shamshir:
+Dimensional Blade:
+Battle Sword:
+Rune Sword:
+Ancient Sword:
+Espandon:
+Dacian Falx:
+Tusk Sword:
+Gothic Sword:
+Zweihander:
+Executioner Sword:
+Falcata:
+Ataghan:
+Elegant Blade:
+Hydra Edge:
+Conquest Sword:
+Cryptic Sword:
+Mythical Sword:
+Legend Sword:
+Highland Blade:
+Balrog Blade:
+Champion Sword:
+Colossus Sword:
+Colossus Blade:
+
+
+###                    THROWING
+Throwing Knife:
+Balanced Knife:
+Throwing Axe:
+Balanced Axe:
+Battle Dart:
+War Dart:
+Francisca:
+Hurlbat:
+Flying Knife:
+Winged Knife:
+Flying Axe:
+Winged Axe:
+
+
+###                    WANDS
+Wand:
+Yew Wand:
+Bone Wand:
+Grim Wand:
+Burnt Wand:
+Petrified Wand:
+Grave Wand:
+Polished Wand:
+Ghost Wand:
+
+
+###                    AMAZON WEAPONS
+Stag Bow:
+Reflex Bow:
+Maiden Spear:
+Maiden Pike:
+Maiden Javelin:
+Ashwood Bow:
+Ceremonial Spear:
+Ceremonial Pike:
+Matriarchal Bow:
+Matriarchal Spear:
+Matriarchal Pike:
+
+
+###                    ASSASSIN WEAPONS
+Katar:
+Wrist Blade:
+Hatchet Hands:
+Cestus:
+Claws:
+Blade Talons:
+Scissors Katar:
+Quhab:
+Wrist Spike:
+Fascia:
+Hand Scythe:
+Greater Claws:
+Greater Talons:
+Scissors Quhab:
+Suwayyah:
+Wrist Sword:
+War Fist:
+Battle Cestus:
+Feral Claws:
+Runic Talons:
+Scirssors Suwayyah:
+
+
+###                    SORC WEAPONS
+Eagle Orb:
+Sacred Globe:
+Smoked Sphere:
+Clasped Orb:
+Jared's Stone:
+Glowing Orb:
+Crystalline Globe:
+Cloudy Sphere:
+Sparkling Ball:
+Heavenly Stone:
+Demon Heart:
+Vortex Orb:
+
+
+###                ARMOR
+###                    PALADIN SHIELDS
+Targe:
+Rondache:
+Heraldic Shield:
+Aerin Shield:
+Crown Shield:
+
+
+###                    NECRO SKULLS
+Preserved Head:
+Zombie Head:
+Unraveller Head:
+Gargoyle Head:
+Demon Head:
+Mummified Trophy:
+Fetish Trophy:
+Sexton Trophy:
+Minion Skull:
+Hellspawn Skull:
+Overseer Skull:
+
+
+###                    BARB HELMS
+Jawbone Cap:
+Fanged Helm:
+Horned Helm:
+Assault Helmet:
+Jawbone Visor:
+Lion Helm:
+Rage Mask:
+Savage Helmet:
+Carnage Helm:
+Fury Visor:
+Destroyer Helm:
+Guardian Crown:
+
+
+###                    DRUID HELMS
+Wolf Head:
+Hawk Helm:
+Antlers:
+Falcon Mask:
+Spirit Mask:
+Alpha Helm:
+Griffon Headdress:
+Sacred Feathers:
+Sun Spirit:
+Dream Spirit:
+
+
+###                    SHIELDS
+Buckler:
+Small Shield:
+Large Shield:
+Kite Shield:
+Spiked Shield:
+Bone Shield:
+Tower Shield:
+Gothic Shield:
+Defender:
+Round Shield:
+Scutum:
+Dragon Shield:
+Barbed Shield:
+Grim Shield:
+Pavise:
+Ancient Shield:
+Heater:
+Luna:
+Hyperion:
+Blade Barrier:
+Troll Nest:
+Aegis:
+Ward:
+
+
+###                    BELTS
+Sash:
+Light Belt:
+Belt:
+Plated Belt:
+Colossus Girdle:
+
+
+###                    BODY ARMOR
+Quilted Armor:
+Leather Armor:
+Hard Leather Armor:
+Studded Leather:
+Ring Mail:
+Scale Mail:
+Chain Mail:
+Breast Plate:
+Splint Mail:
+Plate Mail:
+Field Plate:
+Gothic Plate:
+Light Plate:
+Full Plate Mail:
+Ancient Armor:
+Demonhide Armor:
+Trellised Armor:
+Linked Mail:
+Tigulated Mail:
+Cuirass:
+Sharktooth Armor:
+Embossed Plate:
+Scarab Husk:
+Wire Fleece:
+Diamond Mail:
+Boneweave:
+Great Hauberk:
+
+
+###                    BOOTS
+Heavy Boots:
+Greaves:
+Sharkskin Boots:
+Wyrmhide Boots:
+Mirrored Boots:
+
+
+###      GLOVES
+Leather Gloves:
+Gauntlets:
+Sharkskin Gloves:
+Bramble Mitts:
+Vambraces:
+
+
+###                    HELMS
+Cap:
+Helm:
+Full Helm:
+Mask:
+Bone Helm:
+Great Helm:
+Crown:
+Giant Conch:
+Hydraskull:

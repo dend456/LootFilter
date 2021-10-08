@@ -1,0 +1,3 @@
+Gold:
+Scroll of Town Portal:TP
+Scroll of Identify:ID
