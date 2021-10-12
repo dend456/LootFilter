@@ -1,6 +1,7 @@
 Gold:
 Standard of Heroes:
 
+
 ###                    RUNES
 El Rune:El
 Eld Rune:Eld
@@ -21,43 +22,32 @@ Io Rune:Io
 Lum Rune:Lum
 Ko Rune:Ko
 Fal Rune:Fal
-Lem Rune:Lem
-Pul Rune:\n Pul\n
-Um Rune:\n Um\n
-Mal Rune:\n Mal\n
-Ist Rune:\n Ist\n
-Gul Rune:\n Gul\n
-Vex Rune:\n Vex\n
-Ohm Rune:\n Ohm\n
-Lo Rune:\n Lo\n
-Sur Rune:\n Sur\n
-Ber Rune:\n Ber\n
-Jah Rune:\n Jah\n
-Cham Rune:\n Cham\n
-Zod Rune:\n Zod\n
+{S} Rune:\n {S}
 
 
 ###                    GEMS
 Chipped .*:
 Flawed .*:
 Ruby:
-Topaz:
-#Amethyst:
-#Sapphire:
+#Topaz:
+Amethyst:
+Sapphire:
 Emerald:
 Diamond:
 Skull:
+Flawless {S}:F {S}
+Perfect {S}:P {S}
 
 
 ###                    POTS
 Greater Healing Potion:HP
-Super Healing Potion:+HP+
+Super Healing Potion:+HP
 .*Healing Potion:
 Greater Mana Potion:MN
-Super Mana Potion:+MN+
+Super Mana Potion:+MN
 .*Mana Potion:
 Rejuvenation Potion:Rej
-Full Rejuvenation Potion:+Rej+
+Full Rejuvenation Potion:+Rej
 Stamina Potion:Sta
 Antidote Potion:Anti
 Thawing Potion:Thaw
@@ -385,7 +375,7 @@ War Fist:
 Battle Cestus:
 Feral Claws:
 Runic Talons:
-Scirssors Suwayyah:
+Scissors Suwayyah:
 
 
 ###                    SORC WEAPONS
@@ -410,6 +400,7 @@ Rondache:
 Heraldic Shield:
 Aerin Shield:
 Crown Shield:
+Protector Shield:Prot Shield
 
 
 ###                    NECRO SKULLS
@@ -486,6 +477,7 @@ Light Belt:
 Belt:
 Plated Belt:
 Colossus Girdle:
+Demonhide Sash:Demon Sash
 
 
 ###                    BODY ARMOR
@@ -516,6 +508,7 @@ Wire Fleece:
 Diamond Mail:
 Boneweave:
 Great Hauberk:
+Serpentskin Armor:Serp Armor
 
 
 ###                    BOOTS
@@ -524,15 +517,22 @@ Greaves:
 Sharkskin Boots:
 Wyrmhide Boots:
 Mirrored Boots:
+Myrmidon Greaves:Myr Boot
+Light Plated Boots:Light Boot
+Scarabshell Boots:Scarab Boot
+Demonhide Boots:Demon Boot
 
 
-###      GLOVES
+
+###                    GLOVES
 Leather Gloves:
 Gauntlets:
 Sharkskin Gloves:
 Bramble Mitts:
 Vambraces:
-
+Demonhide Gloves:D Glove
+Vampirebone Gloves:Vamp Glove
+Ogre Gauntlets:Ogre Gaunt
 
 ###                    HELMS
 Cap:
@@ -544,3 +544,4 @@ Great Helm:
 Crown:
 Giant Conch:
 Hydraskull:
+Death Mask:D Mask

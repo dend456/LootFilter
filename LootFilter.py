@@ -93,10 +93,32 @@ class MemoryReader:
         return regions
 
 
+def get_filters(loot_filter_file):
+    try:
+        with open(loot_filter_file) as inp:
+            filters = inp.read().split('\n')
+    except FileNotFoundError as e:
+        print(e)
+        return None
+
+    filters = [x.split(':') for x in filters if x and x[0] != '#']
+    for x in filters:
+        x[0] = re.sub(r'{([Ss]\d*)}', r'(?P<\1>.+)', x[0])
+        x[0] = re.compile(x[0])
+        x[1] = x[1].replace('\\n', '\n')
+
+    return filters
+
+
 def main(loot_filter_file):
     max_chunk_size = 1024 * 1024 * 128
     start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-16-le')
     end_search = 'You may not invite a player to that channel'.encode('utf-16-le')
+
+    filters = get_filters(loot_filter_file)
+    if not filters:
+        print('No filters loaded.')
+        sys.exit(1)
 
     try:
         mr = MemoryReader('Diablo II: Resurrected', 'D2R.exe')
@@ -104,14 +126,6 @@ def main(loot_filter_file):
         print(e)
         sys.exit(1)
     memory_regions = mr.get_memory_regions()
-
-    with open(loot_filter_file) as inp:
-        filters = inp.read().split('\n')
-
-    filters = [x.split(':') for x in filters if x and x[0] != '#']
-    for x in filters:
-        x[0] = re.compile(x[0])
-        x[1] = x[1].replace('\\n', '\n')
 
     print('Searching for string tables.')
     for base_addr, size in memory_regions:
@@ -145,10 +159,16 @@ def main(loot_filter_file):
                             continue
 
                         for filter, rep in filters:
-                            if len(rep) <= len(string) and filter.fullmatch(string):
-                                print(f'\t{i}: {string} -> {rep}')
-                                table[i] = rep.ljust(len(string), '\x00').encode('utf-16-le')
-                                break
+                            match = filter.fullmatch(string)
+                            if match:
+                                groups = match.groupdict()
+                                if len(groups) > 0:
+                                    for k, v in groups.items():
+                                        rep = re.sub(f'{{{k}}}', v, rep)
+                                if len(rep) <= len(string):
+                                    print(f'\t{i}: {string} -> {rep}')
+                                    table[i] = rep.ljust(len(string), '\x00').encode('utf-16-le')
+                                    break
 
                     for i, string in enumerate(table):
                         if type(string) is str:
