@@ -4,4 +4,4 @@ By default it will use the endgame_items.txt filter file which filters ~99% of t
 check the file to make sure something you want isn't hidden.
 
 You can create new filter files and drag them onto the .exe to run them. 
-The string replacing an items name cannot be longer than the original item name.
+The string replacing an item's name cannot be longer than the original item name.
