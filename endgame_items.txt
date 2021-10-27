@@ -366,16 +366,16 @@ Quhab:
 Wrist Spike:
 Fascia:
 Hand Scythe:
-Greater Claws:
-Greater Talons:
-Scissors Quhab:
-Suwayyah:
-Wrist Sword:
-War Fist:
-Battle Cestus:
-Feral Claws:
-Runic Talons:
-Scissors Suwayyah:
+Greater Claws:G Claw
+Greater Talons:G Talon
+Scissors Quhab:S Quhab
+Suwayyah:Suwa
+Wrist Sword:W Sword
+War Fist:Fist
+Battle Cestus:Cestus
+Feral Claws:F Claw
+Runic Talons:R Talon
+Scissors Suwayyah:S Suwa
 
 
 ###                    SORC WEAPONS
