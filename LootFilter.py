@@ -7,7 +7,13 @@ import win32gui
 import re
 import argparse
 import sys
+import multiprocessing as mp
+from functools import partial
 
+max_chunk_size = 1024 * 1024 * 128
+min_chunk_size = 1024 * 1024 * 1
+start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-16-le')
+end_search = 'You may not invite a player to that channel'.encode('utf-16-le')
 
 class MemoryReader:
     PROCESS_VM_READ = 0x0010
@@ -46,9 +52,9 @@ class MemoryReader:
             raise RuntimeError('Unable to get process handle.')
         return handle
 
-    def __del__(self):
-        if self.handle:
-            ct.windll.kernel32.CloseHandle(self.handle)
+    #def __del__(self):
+    #    if self.handle:
+    #        ct.windll.kernel32.CloseHandle(self.handle)
 
     def read(self, address, bytes_to_read):
         def ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, nSize, lpBytesRead):
@@ -110,12 +116,61 @@ def get_filters(loot_filter_file):
     return filters
 
 
-def main(loot_filter_file):
-    max_chunk_size = 1024 * 1024 * 128
-    min_chunk_size = 1024 * 1024 * 1
-    start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-16-le')
-    end_search = 'You may not invite a player to that channel'.encode('utf-16-le')
+def filter_region(filters, region):
+    mr = MemoryReader('Diablo II: Resurrected', 'D2R.exe')
+    base_addr, size = region
+    if size > max_chunk_size:
+        return
+    try:
+        mem = mr.read(base_addr, size)
+    except MemoryReader.MemoryReadError:
+        return
 
+    start_ind = 0
+    while start_ind != -1:
+        ind = mem.find(start_search, start_ind)
+        if ind != -1:
+            start_addr = base_addr + ind
+            ind = mem.find(end_search, ind + 1)
+            if ind != -1:
+                end_addr = base_addr + ind + len(end_search)
+                print(f'Table found at 0x{start_addr:016x} - 0x{end_addr:016x}')
+
+                string_table = mr.read(start_addr, end_addr - start_addr)
+                string_table = string_table.split(b'\x00\x00\x00')
+                table = []
+                for i, x in enumerate(string_table):
+                    try:
+                        table.append((x + b'\x00').decode('utf-16'))
+                    except UnicodeDecodeError:
+                        table.append(x + b'\x00')
+
+                for i, string in enumerate(table):
+                    if type(string) in (bytes, bytearray):
+                        continue
+
+                    for filter, rep in filters:
+                        match = filter.fullmatch(string)
+                        if match:
+                            groups = match.groupdict()
+                            if len(groups) > 0:
+                                for k, v in groups.items():
+                                    rep = re.sub(f'{{{k}}}', v, rep)
+                            if len(rep) <= len(string):
+                                print(f'\t{i}: {string} -> {rep}')
+                                table[i] = rep.ljust(len(string), '\x00').encode('utf-16-le')
+                                break
+
+                for i, string in enumerate(table):
+                    if type(string) is str:
+                        table[i] = string.encode('utf-16-le')
+
+                to_write = b'\x00\x00'.join(table)[:-1]
+                mr.write(start_addr, to_write)
+        start_ind = ind
+
+
+def main(loot_filter_file):
     filters = get_filters(loot_filter_file)
     if not filters:
         print('No filters loaded.')
@@ -126,61 +181,17 @@ def main(loot_filter_file):
     except win32ui.error as e:
         print(e)
         sys.exit(1)
+
     memory_regions = mr.get_memory_regions()
 
+    func = partial(filter_region, filters)
     print('Searching for string tables.')
-    for base_addr, size in reversed(memory_regions):
-        if size > max_chunk_size or size < min_chunk_size:
-            continue
-        try:
-            mem = mr.read(base_addr, size)
-        except MemoryReader.MemoryReadError:
-            continue
-        start_ind = 0
-        while start_ind != -1:
-            ind = mem.find(start_search, start_ind)
-            if ind != -1:
-                start_addr = base_addr + ind
-                ind = mem.find(end_search, ind + 1)
-                if ind != -1:
-                    end_addr = base_addr + ind + len(end_search)
-                    print(f'Table found at 0x{start_addr:016x} - 0x{end_addr:016x}')
-
-                    string_table = mr.read(start_addr, end_addr - start_addr)
-                    string_table = string_table.split(b'\x00\x00\x00')
-                    table = []
-                    for i, x in enumerate(string_table):
-                        try:
-                            table.append((x+b'\x00').decode('utf-16'))
-                        except UnicodeDecodeError:
-                            table.append(x+b'\x00')
-
-                    for i, string in enumerate(table):
-                        if type(string) in (bytes, bytearray):
-                            continue
-
-                        for filter, rep in filters:
-                            match = filter.fullmatch(string)
-                            if match:
-                                groups = match.groupdict()
-                                if len(groups) > 0:
-                                    for k, v in groups.items():
-                                        rep = re.sub(f'{{{k}}}', v, rep)
-                                if len(rep) <= len(string):
-                                    print(f'\t{i}: {string} -> {rep}')
-                                    table[i] = rep.ljust(len(string), '\x00').encode('utf-16-le')
-                                    break
-
-                    for i, string in enumerate(table):
-                        if type(string) is str:
-                            table[i] = string.encode('utf-16-le')
-
-                    to_write = b'\x00\x00'.join(table)[:-1]
-                    mr.write(start_addr, to_write)
-            start_ind = ind
+    with mp.Pool(8) as pool:
+        pool.map(func, reversed(memory_regions))
 
 
 if __name__ == '__main__':
+    mp.freeze_support()
     parser = argparse.ArgumentParser(description='LootFilter')
     parser.add_argument('file', type=str, nargs='?', help='Loot Filter File', default='endgame_items.txt')
     args = parser.parse_args()
