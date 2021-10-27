@@ -112,6 +112,7 @@ def get_filters(loot_filter_file):
 
 def main(loot_filter_file):
     max_chunk_size = 1024 * 1024 * 128
+    min_chunk_size = 1024 * 1024 * 1
     start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-16-le')
     end_search = 'You may not invite a player to that channel'.encode('utf-16-le')
 
@@ -128,8 +129,8 @@ def main(loot_filter_file):
     memory_regions = mr.get_memory_regions()
 
     print('Searching for string tables.')
-    for base_addr, size in memory_regions:
-        if size > max_chunk_size:
+    for base_addr, size in reversed(memory_regions):
+        if size > max_chunk_size or size < min_chunk_size:
             continue
         try:
             mem = mr.read(base_addr, size)
