@@ -12,8 +12,8 @@ from functools import partial
 
 max_chunk_size = 1024 * 1024 * 128
 min_chunk_size = 1024 * 1024 * 1
-start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-16-le')
-end_search = 'You may not invite a player to that channel'.encode('utf-16-le')
+start_search = 'CHAT HELP\x00CHAT COMMANDS\x00To select'.encode('utf-8')
+end_search = 'You may not invite a player to that channel'.encode('utf-8')
 
 class MemoryReader:
     PROCESS_VM_READ = 0x0010
@@ -51,10 +51,6 @@ class MemoryReader:
         if handle == ct.c_void_p(0):
             raise RuntimeError('Unable to get process handle.')
         return handle
-
-    #def __del__(self):
-    #    if self.handle:
-    #        ct.windll.kernel32.CloseHandle(self.handle)
 
     def read(self, address, bytes_to_read):
         def ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, nSize, lpBytesRead):
@@ -135,15 +131,16 @@ def filter_region(filters, region):
             if ind != -1:
                 end_addr = base_addr + ind + len(end_search)
                 print(f'Table found at 0x{start_addr:016x} - 0x{end_addr:016x}')
+                print(f'\tOffset: 0x{start_addr - base_addr:x}')
 
                 string_table = mr.read(start_addr, end_addr - start_addr)
-                string_table = string_table.split(b'\x00\x00\x00')
+                string_table = string_table.split(b'\x00')
                 table = []
                 for i, x in enumerate(string_table):
                     try:
-                        table.append((x + b'\x00').decode('utf-16'))
+                        table.append(x.decode('utf-8'))
                     except UnicodeDecodeError:
-                        table.append(x + b'\x00')
+                        table.append(x)
 
                 for i, string in enumerate(table):
                     if type(string) in (bytes, bytearray):
@@ -157,15 +154,15 @@ def filter_region(filters, region):
                                 for k, v in groups.items():
                                     rep = re.sub(f'{{{k}}}', v, rep)
                             if len(rep) <= len(string):
-                                print(f'\t{i}: {string} -> {rep}')
-                                table[i] = rep.ljust(len(string), '\x00').encode('utf-16-le')
+                                #rint(f'\t{i}: {string} -> {rep}')
+                                table[i] = rep.ljust(len(string), '\x00').encode('utf-8')
                                 break
 
                 for i, string in enumerate(table):
                     if type(string) is str:
-                        table[i] = string.encode('utf-16-le')
+                        table[i] = string.encode('utf-8')
 
-                to_write = b'\x00\x00'.join(table)[:-1]
+                to_write = b'\x00'.join(table)[:-1]
                 mr.write(start_addr, to_write)
         start_ind = ind
 

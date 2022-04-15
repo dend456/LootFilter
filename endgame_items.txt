@@ -26,14 +26,14 @@ Fal Rune:Fal
 
 
 ###                    GEMS
-Chipped .*:
-Flawed .*:
-Ruby:
+#Chipped .*:
+#Flawed .*:
+#Ruby:
 #Topaz:
-Amethyst:
-Sapphire:
-Emerald:
-Diamond:
+#Amethyst:
+#Sapphire:
+#Emerald:
+#Diamond:
 Skull:
 Flawless {S}:F {S}
 Perfect {S}:P {S}
